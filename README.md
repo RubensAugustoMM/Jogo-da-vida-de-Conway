@@ -5,20 +5,20 @@ consiste em uma grade 2D infinita onde são definidas celulas quadradas.
 Neste plano, as celular podem ser definidas como vivas ou mortas, seguindo
 as seguintes regras:
 
-+ 1 . Uma celula morta vem a vida caso houver três celulas adjacentes, na vertical, horizontal ou diagonal, viva.
++ 1 . Uma célula morta vem a vida caso houver três células adjacentes, na vertical, horizontal ou diagonal, viva.
 
-+ 2 . Uma celula morrerá se tiver menos de dois vizinhos (isolamento) ou mais de três vizinhos (superpopulação).
++ 2 . Uma célula morrerá se tiver menos de dois vizinhos (isolamento) ou mais de três vizinhos (superpopulação).
 
 <hl>Este Programa </hl>
 -
 Este programa será uma implementação do jogo da vida de Conway utilizando C e NCURSES.
-Ao inicio do programa, será gerado um plano 2D onde o usuário poderá navegar e tornar celulas vivas.
+Ao inicio do programa, será gerado um plano 2D onde o usuário poderá navegar e tornar células vivas.
 Após selecionar as celular vivas, o usuário poderá dar inicio à simulação e 
 poderá parar ela quando quiser.
 
 Este objetivo será atingindo utilizando arvores balanceadas para armazenar o grande
-número de celulas vivas que o programa irá simular.
+número de células vivas que o programa irá simular.
 
-<hl>Dependencias</hl>
+<hl>Dependências</hl>
 -
 + NCURSES
