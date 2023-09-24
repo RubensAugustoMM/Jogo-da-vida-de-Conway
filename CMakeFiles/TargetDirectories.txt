@@ -1,0 +1,7 @@
+/home/rubens/Desktop/projetos/Jogo-da-vida-de-Conway/CMakeFiles/Jogo_da_vida_de_Conway.dir
+/home/rubens/Desktop/projetos/Jogo-da-vida-de-Conway/CMakeFiles/edit_cache.dir
+/home/rubens/Desktop/projetos/Jogo-da-vida-de-Conway/CMakeFiles/rebuild_cache.dir
+/home/rubens/Desktop/projetos/Jogo-da-vida-de-Conway/CMakeFiles/list_install_components.dir
+/home/rubens/Desktop/projetos/Jogo-da-vida-de-Conway/CMakeFiles/install.dir
+/home/rubens/Desktop/projetos/Jogo-da-vida-de-Conway/CMakeFiles/install/local.dir
+/home/rubens/Desktop/projetos/Jogo-da-vida-de-Conway/CMakeFiles/install/strip.dir

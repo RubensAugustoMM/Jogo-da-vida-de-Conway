@@ -1,0 +1,4 @@
+/home/rubens/Jetbrains/clion-2023.2.1/bin/cmake/linux/x64/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=/home/rubens/Jetbrains/clion-2023.2.1/bin/ninja/linux/x64/ninja -G Ninja -S /home/rubens/Desktop/projetos/Jogo-da-vida-de-Conway -B /home/rubens/Desktop/projetos/Jogo-da-vida-de-Conway/cmake-build-debug
+-- Configuring done (0.0s)
+-- Generating done (0.0s)
+-- Build files have been written to: /home/rubens/Desktop/projetos/Jogo-da-vida-de-Conway/cmake-build-debug
