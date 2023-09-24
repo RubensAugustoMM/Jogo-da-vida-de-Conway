@@ -49,12 +49,12 @@ cmake_ninja_workdir = /home/rubens/Desktop/projetos/Jogo-da-vida-de-Conway/cmake
 
 build cmake_object_order_depends_target_Jogo_da_vida_de_Conway: phony || CMakeFiles/Jogo_da_vida_de_Conway.dir
 
-build CMakeFiles/Jogo_da_vida_de_Conway.dir/InterfaceUsuario.c.o: C_COMPILER__Jogo_da_vida_de_Conway_Debug /home/rubens/Desktop/projetos/Jogo-da-vida-de-Conway/InterfaceUsuario.c || cmake_object_order_depends_target_Jogo_da_vida_de_Conway
-  DEP_FILE = CMakeFiles/Jogo_da_vida_de_Conway.dir/InterfaceUsuario.c.o.d
+build CMakeFiles/Jogo_da_vida_de_Conway.dir/InterfaceUsuario/InterfaceUsuario.c.o: C_COMPILER__Jogo_da_vida_de_Conway_Debug /home/rubens/Desktop/projetos/Jogo-da-vida-de-Conway/InterfaceUsuario/InterfaceUsuario.c || cmake_object_order_depends_target_Jogo_da_vida_de_Conway
+  DEP_FILE = CMakeFiles/Jogo_da_vida_de_Conway.dir/InterfaceUsuario/InterfaceUsuario.c.o.d
   FLAGS = -g -std=gnu11
   INCLUDES = -I/home/rubens/Desktop/projetos/Jogo-da-vida-de-Conway/.
   OBJECT_DIR = CMakeFiles/Jogo_da_vida_de_Conway.dir
-  OBJECT_FILE_DIR = CMakeFiles/Jogo_da_vida_de_Conway.dir
+  OBJECT_FILE_DIR = CMakeFiles/Jogo_da_vida_de_Conway.dir/InterfaceUsuario
 
 
 # =============================================================================
@@ -64,7 +64,7 @@ build CMakeFiles/Jogo_da_vida_de_Conway.dir/InterfaceUsuario.c.o: C_COMPILER__Jo
 #############################################
 # Link the executable Jogo_da_vida_de_Conway
 
-build Jogo_da_vida_de_Conway: C_EXECUTABLE_LINKER__Jogo_da_vida_de_Conway_Debug CMakeFiles/Jogo_da_vida_de_Conway.dir/InterfaceUsuario.c.o | /usr/lib/x86_64-linux-gnu/libcurses.so
+build Jogo_da_vida_de_Conway: C_EXECUTABLE_LINKER__Jogo_da_vida_de_Conway_Debug CMakeFiles/Jogo_da_vida_de_Conway.dir/InterfaceUsuario/InterfaceUsuario.c.o | /usr/lib/x86_64-linux-gnu/libcurses.so
   FLAGS = -g
   LINK_LIBRARIES = -lcurses
   OBJECT_DIR = CMakeFiles/Jogo_da_vida_de_Conway.dir

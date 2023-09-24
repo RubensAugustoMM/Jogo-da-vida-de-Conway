@@ -1,22 +1,7 @@
 # ninja log v5
-1	89	1695565853115444850	CMakeFiles/Jogo_da_vida_de_Conway.dir/InterfaceUsuario.c.o	1be115e7c94b467a
-89	139	1695565853211444504	Jogo_da_vida_de_Conway	c8367ee53f70ccf
-1	45	1695567340915634959	build.ninja	da13a7939a19e457
-0	82	1695567351091574836	CMakeFiles/Jogo_da_vida_de_Conway.dir/InterfaceUsuario.c.o	cdb9419ebee372b7
-82	125	1695567351135574575	Jogo_da_vida_de_Conway	c8367ee53f70ccf
-1	84	1695567540670450474	CMakeFiles/Jogo_da_vida_de_Conway.dir/InterfaceUsuario.c.o	cdb9419ebee372b7
-84	137	1695567540722450165	Jogo_da_vida_de_Conway	c8367ee53f70ccf
-0	42	1695567696873519118	CMakeFiles/Jogo_da_vida_de_Conway.dir/InterfaceUsuario.c.o	cdb9419ebee372b7
-42	99	1695567696929518783	Jogo_da_vida_de_Conway	c8367ee53f70ccf
-1	47	1695567722825364043	CMakeFiles/Jogo_da_vida_de_Conway.dir/InterfaceUsuario.c.o	cdb9419ebee372b7
-48	98	1695567722873363755	Jogo_da_vida_de_Conway	c8367ee53f70ccf
-0	48	1695567749799115235	CMakeFiles/Jogo_da_vida_de_Conway.dir/InterfaceUsuario.c.o	cdb9419ebee372b7
-49	93	1695567749843114970	Jogo_da_vida_de_Conway	c8367ee53f70ccf
-1	48	1695567972652095679	CMakeFiles/Jogo_da_vida_de_Conway.dir/InterfaceUsuario.c.o	cdb9419ebee372b7
-48	84	1695567972688099589	Jogo_da_vida_de_Conway	c8367ee53f70ccf
-0	70	1695568040121252177	CMakeFiles/Jogo_da_vida_de_Conway.dir/InterfaceUsuario.c.o	cdb9419ebee372b7
-70	119	1695568040193262926	Jogo_da_vida_de_Conway	c8367ee53f70ccf
-0	49	1695568090753934464	CMakeFiles/Jogo_da_vida_de_Conway.dir/InterfaceUsuario.c.o	cdb9419ebee372b7
-49	89	1695568090797905692	Jogo_da_vida_de_Conway	c8367ee53f70ccf
 0	57	1695570244701037050	CMakeFiles/Jogo_da_vida_de_Conway.dir/InterfaceUsuario.c.o	cdb9419ebee372b7
 57	106	1695570244749038393	Jogo_da_vida_de_Conway	c8367ee53f70ccf
+1	45	1695572909655563162	build.ninja	da13a7939a19e457
+0	57	1695572909655563162	build.ninja	476290b7eeca731b
+0	61	1695572909727597668	CMakeFiles/Jogo_da_vida_de_Conway.dir/InterfaceUsuario/InterfaceUsuario.c.o	8c439e56b10ff3c7
+61	107	1695572909775620673	Jogo_da_vida_de_Conway	e27dbb630fd249cd
