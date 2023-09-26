@@ -10,7 +10,10 @@
 //inicializa a grade do jogo
 WINDOW *InitGrade(int maxY, int maxX);
 //inicializa a barra de informações na parte inferior da tela
-WINDOW *InitBarraDeInformacoes(int maxY, int maxX);
+WINDOW *InitBarraDeInformacoesInferior(int maxY, int maxX);
+//função para gerar a barra de informação à esquerda
+WINDOW *InitBarraDeInformacoesEsquerda(int maxY, int maxX);
 //inicializa a interface do jogo
-void InitConwayGameOfLifeUI(WINDOW** grade, WINDOW** barra);
+void InitConwayGameOfLifeUI(WINDOW** grade, WINDOW** barraInfeiror, WINDOW** barraEsquerda);
 #endif //JOGO_DA_VIDA_DE_CONWAY_GRADE_H
+

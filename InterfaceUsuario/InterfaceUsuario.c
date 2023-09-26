@@ -5,16 +5,17 @@
 
 WINDOW *InitGrade(int maxY, int maxX)
 {
-    int alt = maxY - 2;
+    int alt = maxY - 6;
+    int comp = maxX/2;
+
     WINDOW *grade;
 
-    grade = newwin(alt, maxX, 0, 0);
+    grade = newwin(alt, comp, 3, (maxX/2) - (comp/2));
+    keypad(grade, true);
 
     for(int i = 0; i <= maxY;i++)
-    {
-        wmove(grade,i, 0);
-        whline(grade, '+', maxX);
-    }
+        mvwhline(grade, i, 0, '+', maxX);
+
     refresh();
     wrefresh(grade);
 
@@ -22,21 +23,37 @@ WINDOW *InitGrade(int maxY, int maxX)
 }
 
 //inicializa a barra de informações na parte inferior da tela
-WINDOW *InitBarraDeInformacoes(int maxY, int maxX)
+WINDOW *InitBarraDeInformacoesInferior(int maxY, int maxX)
 {
+    int comp = maxX - (maxX/2);
+
     WINDOW *barraDeInformacoes;
 
-    barraDeInformacoes = newwin(2, maxX, maxY-2, 0);
-    wmove(barraDeInformacoes, 0, 0);
-    whline(barraDeInformacoes,'=', maxX);
+    barraDeInformacoes = newwin(3,comp, maxY-3, (maxX/2) - (comp/2) );
+
+    mvwhline(barraDeInformacoes, 0, 0,'=', maxX);
 
     refresh();
     wrefresh(barraDeInformacoes);
 
     return barraDeInformacoes;
 }
+
+WINDOW *InitBarraDeInformacoesEsquerda(int maxY, int maxX)
+{
+    int comp = maxX/4;
+
+    WINDOW *barraEsquerda = newwin(maxY, comp, 0, 0);
+
+    mvwvline(barraEsquerda, 0, comp -1,'|', maxY );
+
+    wrefresh(barraEsquerda);
+
+    return barraEsquerda;
+}
+
 //inicializa a interface do jogo
-void InitConwayGameOfLifeUI(WINDOW** grade, WINDOW** barra)
+void InitConwayGameOfLifeUI(WINDOW** grade, WINDOW** barraInferior, WINDOW** barraEsquerda)
 {
     int maxY, maxX;
 
@@ -46,20 +63,25 @@ void InitConwayGameOfLifeUI(WINDOW** grade, WINDOW** barra)
 
     getmaxyx(stdscr, maxY, maxX);
 
-    mvprintw( maxY/2, maxX/2,"!!REFRESH DADO NA STDSCR!!");
+    if(maxY < 36 || maxX < 36)
+        printw("!!TERMINAL PEQUENO DEMAIS!!");
+    else
+    {
+        *grade = InitGrade(maxY, maxX);
+        *barraInferior = InitBarraDeInformacoesInferior(maxY, maxX);
+        *barraEsquerda = InitBarraDeInformacoesEsquerda(maxY, maxX);
 
-    *grade = InitGrade(maxY, maxX);
-    *barra = InitBarraDeInformacoes(maxY, maxX);
-
-
+    }
 }
+
 
 int main()
 {
     WINDOW *grade;
-    WINDOW *barra;
+    WINDOW *barraInferior;
+    WINDOW *barraEsquerda;
 
-    InitConwayGameOfLifeUI(&grade, &barra);
+    InitConwayGameOfLifeUI(&grade, &barraInferior, &barraEsquerda);
 
     getch();
 
@@ -69,20 +91,3 @@ int main()
 }
 
 
-/*
-int main()
-{
-    int x, y;
-
-    initscr();
-    noecho();
-    getmaxyx(stdscr, y, x);
-    move(y/2, 0);
-    hline('-', x);
-    getch();
-
-    endwin();
-
-    return 0;
-}
-*/
