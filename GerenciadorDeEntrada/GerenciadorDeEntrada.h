@@ -1,0 +1,11 @@
+//
+// Created by rubens on 24/09/23.
+//
+
+#ifndef JOGO_DA_VIDA_DE_CONWAY_GERENCIADORDEENTRADA_H
+#define JOGO_DA_VIDA_DE_CONWAY_GERENCIADORDEENTRADA_H
+
+int RecebeEntrada();
+int GerenciaEntrada();
+
+#endif //JOGO_DA_VIDA_DE_CONWAY_GERENCIADORDEENTRADA_H

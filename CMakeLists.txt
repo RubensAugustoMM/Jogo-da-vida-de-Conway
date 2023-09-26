@@ -12,6 +12,8 @@ add_executable(Jogo_da_vida_de_Conway
         InterfaceUsuario/InterfaceUsuario.c
         InterfaceUsuario/InterfaceUsuario.h
         GerenciadorDeEntrada/GerenciadorDeEntrada.c
-        GerenciadorDeEntrada/GerenciadorDeEntrada.h)
+        GerenciadorDeEntrada/GerenciadorDeEntrada.h
+        Celulas/Celulas.c
+        Celulas/Celulas.h)
 target_link_libraries(Jogo_da_vida_de_Conway ${CURSES_LIBRARY})
 install(TARGETS Jogo_da_vida_de_Conway RUNTIME DESTINATION ${BIN_DIR})
