@@ -75,6 +75,8 @@ void InitConwayGameOfLifeUI(WINDOW** grade, WINDOW** barraInferior, WINDOW** bar
 }
 
 
+//teste de interface
+/*
 int main()
 {
     WINDOW *grade;
@@ -89,5 +91,24 @@ int main()
 
     return 0;
 }
+*/
 
+//teste de geração de id
+/*
+int main()
+{
+    int x, y;
+    int id;
+
+    printf("Insira o x e o y:\n");
+    scanf("%d %d", &x, &y);
+
+    id = GeraId(y, x);
+
+    printf("id: %d\n", id);
+
+    return 0;
+
+}
+ */
 

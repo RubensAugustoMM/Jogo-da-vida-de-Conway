@@ -3,6 +3,7 @@
 //
 #include <ncurses.h>
 #include <stdio.h>
+#include "Celulas/Celulas.h" //lembre-se de retirar
 #ifndef JOGO_DA_VIDA_DE_CONWAY_GRADE_H
 #define JOGO_DA_VIDA_DE_CONWAY_GRADE_H
 
