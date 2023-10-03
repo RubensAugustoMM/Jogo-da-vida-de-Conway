@@ -7,7 +7,7 @@
  struct celula
  {
     int x, y;
-    int id;
+    unsigned int id;
 
     ponteiroCelula filhoEsquerda;
     ponteiroCelula filhoDireita;
@@ -15,9 +15,12 @@
 
 
 //Inicializa a arvore de celulas
-ponteiroCelula InitArvoreCelula()
+ponteiroCelula* InitArvoreCelula()
 {
-    ponteiroCelula arvore = NULL;
+    ponteiroCelula* arvore = NULL;
+
+    arvore = malloc(sizeof (ponteiroCelula));
+    *arvore = NULL;
 
     return arvore;
 }
@@ -25,26 +28,26 @@ ponteiroCelula InitArvoreCelula()
 //cria uma nova celula
 ponteiroCelula CriaCelula(int y, int x)
 {
-    ponteiroCelula celula = NULL;
+    ponteiroCelula ptr = NULL;
 
-    celula = malloc(sizeof(celula));
+    ptr = malloc(sizeof(celula));
 
-    if(celula != NULL)
+    if(ptr != NULL)
     {
-        celula->id = GeraId(y, x);
-        celula->y = y;
-        celula->x = x;
-        celula->filhoDireita = NULL;
-        celula->filhoEsquerda = NULL;
+        ptr->id = GeraId(y, x);
+        ptr->y = y;
+        ptr->x = x;
+        ptr->filhoDireita = NULL;
+        ptr->filhoEsquerda = NULL;
     }
 
-    return celula;
+    return ptr;
 }
 
 //insere uma celula na arvore, retorna 1 caso sucesso, -1 caso falha
 int InsereCelula(int y, int x, ponteiroCelula* arvore)
 {
-    if(arvore == NULL)
+    if(*arvore == NULL)
     {
         ponteiroCelula celula = NULL;
 
@@ -72,33 +75,38 @@ int InsereCelula(int y, int x, ponteiroCelula* arvore)
     }
 }
 //procura uma celula na arvore e retorna um ponteiro
-ponteiroCelula ProcuraCelulaNaArvore(int id, ponteiroCelula arvore)
+ponteiroCelula* ProcuraCelulaNaArvore(int id, ponteiroCelula* arvore)
 {
     if(arvore == NULL)
         return NULL;
-    if(arvore->id == id)
+    if(*arvore == NULL)
+        return NULL;
+
+    if((*arvore)->id == id)
         return arvore;
-    if(arvore->id > id)
-        return ProcuraCelulaNaArvore(id, arvore->filhoEsquerda);
+    if((*arvore)->id > id)
+        return ProcuraCelulaNaArvore(id, &(*arvore)->filhoEsquerda);
     else
-        return ProcuraCelulaNaArvore(id, arvore->filhoEsquerda);
+        return ProcuraCelulaNaArvore(id, &(*arvore)->filhoDireita);
 }
 //procura celulas ao redor de uma celula específica, retorna retorna o número de células
 //adjacentes
-int ProcuraCelulasProximidade(ponteiroCelula celula, ponteiroCelula arvore)
+int ProcuraCelulasProximidade(ponteiroCelula celula, ponteiroCelula *arvore)
 {
     if(celula == NULL)
         return -1;
     int x = celula->x - 1;
-    int y = celula->y + 1;
+    int y = celula->y - 1;
+    int id;
     int numCelulasAdjacentes = 0;
 
     for(int yLocal = 0;yLocal < 3;yLocal++)
     {
         for(int xLocal = 0; xLocal < 3; xLocal++)
         {
-            if(ProcuraCelulaNaArvore(GeraId((y + yLocal), (x + xLocal)), arvore) != NULL)
-                if(yLocal != xLocal)
+            id = GeraId(y  + yLocal, x + xLocal);
+            if(ProcuraCelulaNaArvore(id, arvore) != NULL)
+                if(celula->id != id)
                     numCelulasAdjacentes++;
         }
     }
@@ -106,27 +114,40 @@ int ProcuraCelulasProximidade(ponteiroCelula celula, ponteiroCelula arvore)
     return numCelulasAdjacentes;
 }
 //deleta uma celula da arvore e altera o seu estado na grade, retorna sucesso ou falha
-int DeletaCelula(int id, ponteiroCelula arvore)
+int DeletaCelula(int id, ponteiroCelula* arvore)
 {
-    ponteiroCelula ptr1 = NULL;
-    ponteiroCelula ptr2 = NULL;
-    ponteiroCelula ptr3 = NULL;
+    ponteiroCelula* ptr1;
+    ponteiroCelula* ptr2 = malloc(sizeof(ponteiroCelula));
 
 
     ptr1 = ProcuraCelulaNaArvore(id, arvore);
-    if(ptr1 == NULL)
+    if(*ptr1 == NULL)
         return -1;
 
-    ptr2 = ptr1;
-    ptr1 = ptr2->filhoDireita;
+    if((*ptr1)->filhoDireita != NULL)
+    {
+        if((*ptr1)->filhoEsquerda != NULL)
+            InsereCelula(((*ptr1)->filhoEsquerda)->y, ((*ptr1)->filhoEsquerda)->x,
+                         &(*ptr1)->filhoDireita);
+        *ptr2 = *ptr1;
+        *ptr1 = (*ptr2)->filhoDireita;
 
-    if(ptr1 !=NULL)
-        if(ptr2->filhoEsquerda != NULL)
-            InsereCelula(ptr2->filhoEsquerda->y, ptr2->filhoEsquerda->x,
-                         &ptr1);
+        free(*ptr2);
+        *ptr2 = NULL;
+    }
+    else if((*ptr1)->filhoEsquerda != NULL)
+    {
+        *ptr2 = *ptr1;
+        *ptr1 = (*ptr2)->filhoDireita;
 
-    free(ptr2);
-    ptr2 = NULL;
+        free(*ptr2);
+        *ptr2 = NULL;
+    }
+    else
+    {
+        free(*ptr1);
+        *ptr1 = NULL;
+    }
 
     return 1;
 }
@@ -145,7 +166,7 @@ int GeraId(int y, int x)
 
     int status1, status2;
     int n1, n2; //numeros utilizados para manipulação de algarismos
-    int id;
+    unsigned int id;
 
 
     status1 = 0;
@@ -188,4 +209,17 @@ int GeraId(int y, int x)
     id = id*n2 + Modulo(x);
 
     return id;
+}
+
+void MostraArvore(ponteiroCelula* arvore)
+{
+    if(*arvore != NULL) {
+        printf("x:%d\n"
+               "y:%d\n"
+               "Id:%d\n\n", (*arvore)->x, (*arvore)->y, (*arvore)->id);
+
+
+        MostraArvore(&(*arvore)->filhoEsquerda);
+        MostraArvore(&(*arvore)->filhoDireita);
+    }
 }

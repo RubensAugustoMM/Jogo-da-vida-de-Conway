@@ -112,3 +112,59 @@ int main()
 }
  */
 
+//teste da arvore
+/*
+int main()
+{
+    int x, y, num;
+
+    ponteiroCelula* arvore = NULL;
+    ponteiroCelula * ptr;
+
+    arvore = InitArvoreCelula();
+
+    while(1)
+    {
+        printf("Entre 1 para adicionar uma celula, 2 para deletar uma celula,"
+               " 3 para mostrar a arvore, 4 para mostrar celulas na proximidade"
+               " e 0 para sair do programa\n");
+        scanf("%d", &num);
+
+        if(num == 0)
+            break;
+
+        switch(num)
+        {
+            case 1:
+                printf("entre os valores de x e y:\n");
+                scanf("%d %d", &x, &y);
+
+                InsereCelula(y, x, arvore);
+
+                break;
+            case 2:
+               printf("entre os valores de x e y:\n");
+               scanf("%d %d", &x, &y);
+
+               x = GeraId(y, x);
+               x = DeletaCelula(x, arvore);
+               if(x == 1)
+                   printf("Celula deletada com sucesso!\n");
+               else
+                   printf("Falha ao deletar celula!\n");
+               break;
+            case 3:
+                MostraArvore(arvore);
+            break;
+            case 4:
+                printf("entre os valores de x e y:\n");
+                scanf("%d %d", &x, &y);
+                ptr = ProcuraCelulaNaArvore(GeraId(y, x), arvore);
+                x = ProcuraCelulasProximidade( *ptr, arvore);
+                printf("Celulas na proximidade: %d\n", x);
+                break;
+        }
+    }
+    return 0;
+}
+*/
