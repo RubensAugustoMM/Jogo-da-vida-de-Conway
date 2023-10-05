@@ -74,6 +74,7 @@ void InitConwayGameOfLifeUI(WINDOW** grade, WINDOW** barraInferior, WINDOW** bar
     }
 }
 
+void ScrollWindow(WINDOW* barraEsquerda, WINDOW* grade, int fase);
 
 //teste de interface
 /*
