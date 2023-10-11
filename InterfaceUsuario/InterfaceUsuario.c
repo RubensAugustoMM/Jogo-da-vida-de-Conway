@@ -74,7 +74,15 @@ void InitConwayGameOfLifeUI(WINDOW** grade, WINDOW** barraInferior, WINDOW** bar
     }
 }
 
-void ScrollWindow(WINDOW* barraEsquerda, WINDOW* grade, int fase);
+void ScrollWindow(WINDOW* barraEsquerda, WINDOW* grade, int fase)
+{
+
+}
+
+void AtualizaGrade(WINDOW* grade, int winPosY, int winPosX )
+{
+
+}
 
 //teste de interface
 /*
