@@ -135,9 +135,9 @@ void AtualizaGrade(WINDOW* grade, int winPosY, int winPosX )
 
 void RefreshTodasasTelas(WINDOW* grade, WINDOW* barraInferior, WINDOW* barraEsquerda)
 {
-    wrefresh(grade);
     wrefresh(barraEsquerda);
     wrefresh(barraInferior);
+    wrefresh(grade); //deve ser a ultima a ser atualizada 
 }
 
 //teste de interface
