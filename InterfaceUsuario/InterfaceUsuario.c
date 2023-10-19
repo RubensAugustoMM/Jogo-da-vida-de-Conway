@@ -93,28 +93,28 @@ void MoveCursor(WINDOW* barraEsquerda,WINDOW* grade, int dir)
             if(y - 1 < 0)
                 ScrollWindow(barraEsquerda, grade);
             else
-                wmove(grade, y - 1, x);
-            break;
+                wmove(grade, y - 1, x);//precisa ser adicionado a função para a movimentação do cursor fisico do terminal
+            break;              
 
         case KEY_DOWN:
             if(y + 1 > maxY)
                 ScrollWindow(barraEsquerda, grade);
             else
-                wmove(grade, y + 1, x);
+                wmove(grade, y + 1, x);//precisa ser adicionado a função para a movimentação do cursor fisico do terminal
             break;
 
         case KEY_LEFT:
             if(x - 1 < 0)
                 ScrollWindow(barraEsquerda, grade);
             else
-                wmove(grade, y, x - 1);
+                wmove(grade, y, x - 1);//precisa ser adicionado a função para a movimentação do cursor fisico do terminal
             break;
 
         case KEY_RIGHT:
             if(x + 1 > maxX)
                 ScrollWindow(barraEsquerda, grade);
             else
-                wmove(grade, y, x + 1);
+                wmove(grade, y, x + 1);//precisa ser adicionado a função para a movimentação do cursor fisico do terminal
             break;
     }
 }
