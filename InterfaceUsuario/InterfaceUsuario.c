@@ -92,10 +92,8 @@ void MoveCursor(WINDOW* barraEsquerda,WINDOW* grade, int dir)
         case KEY_UP:
             if(y - 1 < 0)
                 ScrollWindow(barraEsquerda, grade);
-            else {
+            else
                 wmove(grade, y - 1, x);
-                move(y -1, x);
-            }
             break;
 
         case KEY_DOWN:
