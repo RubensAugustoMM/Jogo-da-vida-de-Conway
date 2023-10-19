@@ -11,7 +11,7 @@ WINDOW *InitGrade(int maxY, int maxX)
     WINDOW *grade;
 
     grade = newwin(alt, comp, 3, (maxX/2) - (comp/2));
-    keypad(grade, true);
+    keypad(grade, TRUE);
 
     for(int i = 0; i <= maxY;i++)
         mvwhline(grade, i, 0, '+', maxX);
@@ -55,11 +55,14 @@ WINDOW *InitBarraDeInformacoesEsquerda(int maxY, int maxX)
 //inicializa a interface do jogo
 void InitConwayGameOfLifeUI(WINDOW** grade, WINDOW** barraInferior, WINDOW** barraEsquerda)
 {
+    const int DELAY = 1000;
     int maxY, maxX;
 
     initscr();
-    noecho();
     raw();
+    noecho();
+    timeout(DELAY);
+    keypad(stdscr, TRUE);
 
     getmaxyx(stdscr, maxY, maxX);
 
@@ -71,10 +74,57 @@ void InitConwayGameOfLifeUI(WINDOW** grade, WINDOW** barraInferior, WINDOW** bar
         *barraInferior = InitBarraDeInformacoesInferior(maxY, maxX);
         *barraEsquerda = InitBarraDeInformacoesEsquerda(maxY, maxX);
 
+        getmaxyx(*grade, maxY, maxX);
+        wmove(*grade, maxY/2, maxX/2);
     }
 }
 
-void ScrollWindow(WINDOW* barraEsquerda, WINDOW* grade, int fase)
+void MoveCursor(WINDOW* barraEsquerda,WINDOW* grade, int dir)
+{
+    int y, x;
+    int maxY, maxX;
+
+    getyx(grade, y, x);
+    getmaxyx(grade, maxY, maxX);
+
+    switch (dir)
+    {
+        case KEY_UP:
+            if(y - 1 < 0)
+                ScrollWindow(barraEsquerda, grade);
+            else {
+                wmove(grade, y - 1, x);
+                move(y -1, x);
+            }
+            break;
+
+        case KEY_DOWN:
+            if(y + 1 > maxY)
+                ScrollWindow(barraEsquerda, grade);
+            else
+                wmove(grade, y + 1, x);
+            break;
+
+        case KEY_LEFT:
+            if(x - 1 < 0)
+                ScrollWindow(barraEsquerda, grade);
+            else
+                wmove(grade, y, x - 1);
+            break;
+
+        case KEY_RIGHT:
+            if(x + 1 > maxX)
+                ScrollWindow(barraEsquerda, grade);
+            else
+                wmove(grade, y, x + 1);
+            break;
+    }
+}
+//Desenha celula na grade
+void DesenhaCelula(WINDOW* grade, int y, int x);
+
+
+void ScrollWindow(WINDOW* barraEsquerda, WINDOW* grade)
 {
 
 }
@@ -82,6 +132,14 @@ void ScrollWindow(WINDOW* barraEsquerda, WINDOW* grade, int fase)
 void AtualizaGrade(WINDOW* grade, int winPosY, int winPosX )
 {
 
+}
+
+
+void RefreshTodasasTelas(WINDOW* grade, WINDOW* barraInferior, WINDOW* barraEsquerda)
+{
+    wrefresh(grade);
+    wrefresh(barraEsquerda);
+    wrefresh(barraInferior);
 }
 
 //teste de interface

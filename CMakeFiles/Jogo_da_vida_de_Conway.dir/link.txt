@@ -1,1 +1,0 @@
-/usr/bin/cc CMakeFiles/Jogo_da_vida_de_Conway.dir/InterfaceUsuario.c.o -o Jogo_da_vida_de_Conway  -lcurses 

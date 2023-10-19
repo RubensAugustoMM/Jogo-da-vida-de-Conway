@@ -21,7 +21,13 @@ void AtualizaBarraEsquerda(WINDOW* barra, int winPosY, int winPosX, int curPosY,
 //inicializa a interface do jogo
 void InitConwayGameOfLifeUI(WINDOW** grade, WINDOW** barraInferior, WINDOW** barraEsquerda);
 //Move a tela principal
-void ScrollWindow(WINDOW* barraEsquerda, WINDOW* grade, int fase);
+void ScrollWindow(WINDOW* barraEsquerda, WINDOW* grade);
+//move cursor
+void MoveCursor(WINDOW* barraEsquerda,WINDOW* grade, int dir);
+
+void DesenhaCelula(WINDOW* grade, int y, int x);
+
+void RefreshTodasasTelas(WINDOW* grade, WINDOW* barraInferior, WINDOW* barraEsquerda);
 
 #endif //JOGO_DA_VIDA_DE_CONWAY_GRADE_H
 
