@@ -42,11 +42,13 @@ int main()
                     {
                         InsereCelula(y, x, arvore);
                         wprintw(grade, "#");
+                        wmove(grade, x-1, y);
                     }
                     else
                     {
                         DeletaCelula(GeraId(y, x), arvore);
                         wprintw(grade, "+");
+                        wmove(grade, x-1, y);
                     }
 
                 }

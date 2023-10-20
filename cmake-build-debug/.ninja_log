@@ -1,15 +1,8 @@
 # ninja log v5
-73	107	1697635368591747800	Jogo_da_vida_de_Conway	4c6b972200d661d2
-0	65	1697643954920450434	build.ninja	476290b7eeca731b
+87	137	1697722238405539948	Jogo_da_vida_de_Conway	4c6b972200d661d2
+0	65	1697723269528893087	build.ninja	476290b7eeca731b
 0	33	1695646893116666324	CMakeFiles/Jogo_da_vida_de_Conway.dir/GerenciadorDeEntrada/GerenciadorDeEntrada.c.o	88a01f109ffff6b7
-0	50	1697635368535747269	CMakeFiles/Jogo_da_vida_de_Conway.dir/InterfaceUsuario/InterfaceUsuario.c.o	4eda0c86d9d9ece7
+1	87	1697722238353536170	CMakeFiles/Jogo_da_vida_de_Conway.dir/InterfaceUsuario/InterfaceUsuario.c.o	4eda0c86d9d9ece7
 2	53	1695900012311434847	CMakeFiles/Jogo_da_vida_de_Conway.dir/Utilitarios/Utilitarios.c.o	d1cacf4df7716fc9
-1	73	1697635368559747497	CMakeFiles/Jogo_da_vida_de_Conway.dir/Main.c.o	adb7ee7e252f1ea5
+1	86	1697722238353536170	CMakeFiles/Jogo_da_vida_de_Conway.dir/Main.c.o	adb7ee7e252f1ea5
 1	50	1696334903493935414	CMakeFiles/Jogo_da_vida_de_Conway.dir/Celulas/Celulas.c.o	18e19cb23f90ac5a
-1	183	1697715749777247920	CMakeFiles/Jogo_da_vida_de_Conway.dir/InterfaceUsuario/InterfaceUsuario.c.o	4eda0c86d9d9ece7
-183	250	1697715749841248033	Jogo_da_vida_de_Conway	4c6b972200d661d2
-1	71	1697715964173626525	CMakeFiles/Jogo_da_vida_de_Conway.dir/Main.c.o	adb7ee7e252f1ea5
-1	80	1697715964181626540	CMakeFiles/Jogo_da_vida_de_Conway.dir/InterfaceUsuario/InterfaceUsuario.c.o	4eda0c86d9d9ece7
-80	146	1697715964245626653	Jogo_da_vida_de_Conway	4c6b972200d661d2
-5	115	1697721593840893618	CMakeFiles/Jogo_da_vida_de_Conway.dir/InterfaceUsuario/InterfaceUsuario.c.o	4eda0c86d9d9ece7
-115	169	1697721593892903086	Jogo_da_vida_de_Conway	4c6b972200d661d2
