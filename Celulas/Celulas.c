@@ -91,6 +91,9 @@ ponteiroCelula* ProcuraCelulaNaArvore(int id, ponteiroCelula* arvore)
 }
 //procura celulas ao redor de uma celula específica, retorna retorna o número de células
 //adjacentes
+
+//esta função é de certa forma inutil no momento pois a procura de celulas adjacentes será feita através
+//da grade utilizando a função inch()
 int ProcuraCelulasProximidade(ponteiroCelula celula, ponteiroCelula *arvore)
 {
     if(celula == NULL)
