@@ -22,3 +22,19 @@ número de células vivas que o programa irá simular.
 <hl>Dependências</hl>
 -
 + NCURSES
++ Cmake versão mínima: 3.22
+
+<hl>Execução:</hl>
+-
+Para executar este código é necessário primeiramente compila-lo utilizando o cmake.
+Para isso, navege até o diretório "cmake-build-
+debug", dentro da pasta do projeto, e execute a seguinte linha de 
+comando:
+    
+    cmake --build .
+
+Se o programa compilar com sucesso, basta executar o executável do programa.
+Para isso, execute dentro do mesmo diretório através da linha
+de comando:
+
+    ./Jogo_da_vida_de_Conway
