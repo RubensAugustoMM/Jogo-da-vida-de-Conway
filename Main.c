@@ -45,7 +45,7 @@ int main()
                     }
                     else
                     {
-                        DeletaCelula(GeraId(y, x), arvore);
+                        DeletaCelula(GeraId(y, x), arvore); // No momento, ao deletar um filho esquerda de um nodo, a informação de todos os seus filhos é perdida!!!
                         mvwprintw(grade,y, x, "+");
                     }
 
