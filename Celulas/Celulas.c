@@ -45,9 +45,8 @@ ponteiroCelula CriaCelula(int y, int x)
 }
 
 //insere uma celula na arvore, retorna 1 caso sucesso, -1 caso falha
-//alterar a função de inserção para inserir um nodo existente ao invés de criar um novo sempre
 //A função de criação de nodo terá que ser fora da função de inserção para simplificar o algoritmo
-int InsereCelula(int y, int x, ponteiroCelula* arvore)
+int InsereCelula_Id(int y, int x, ponteiroCelula* arvore)
 {
     if(*arvore == NULL)
     {
@@ -71,11 +70,36 @@ int InsereCelula(int y, int x, ponteiroCelula* arvore)
         celulaAtual = *arvore;
 
         if(celulaAtual->id > id )
-            return InsereCelula(y, x, &celulaAtual->filhoEsquerda);
+            return InsereCelula_Id(y, x, &celulaAtual->filhoEsquerda);
         else
-            return InsereCelula(y, x, &celulaAtual->filhoDireita);
+            return InsereCelula_Id(y, x, &celulaAtual->filhoDireita);
     }
 }
+//Insere celula existente
+int InsereCelula_ptr(ponteiroCelula* celula, ponteiroCelula* arvore)
+{
+    if(*arvore == NULL)
+    {
+        if(celula == NULL)
+            return -1;
+        else
+        {
+            *arvore = *celula;
+            return 1;
+        }
+    }
+    else
+    {
+        ponteiroCelula celulaAtual = NULL;
+        celulaAtual = *arvore;
+
+        if(celulaAtual->id > (*celula)->id )
+            return InsereCelula_ptr(celula, &celulaAtual->filhoEsquerda);
+        else
+            return InsereCelula_ptr(celula, &celulaAtual->filhoDireita);
+    }
+}
+
 //procura uma celula na arvore e retorna um ponteiro
 ponteiroCelula* ProcuraCelulaNaArvore(int id, ponteiroCelula* arvore)
 {
@@ -93,9 +117,6 @@ ponteiroCelula* ProcuraCelulaNaArvore(int id, ponteiroCelula* arvore)
 }
 //procura celulas ao redor de uma celula específica, retorna retorna o número de células
 //adjacentes
-
-//esta função é de certa forma inutil no momento pois a procura de celulas adjacentes será feita através
-//da grade utilizando a função inch()
 int ProcuraCelulasProximidade(ponteiroCelula celula, ponteiroCelula *arvore)
 {
     if(celula == NULL)
@@ -119,7 +140,6 @@ int ProcuraCelulasProximidade(ponteiroCelula celula, ponteiroCelula *arvore)
     return numCelulasAdjacentes;
 }
 //deleta uma celula da arvore e altera o seu estado na grade, retorna sucesso ou falha
-// No momento, ao deletar um filho esquerda de um nodo, a informação de todos os seus filhos é perdida!!!
 int DeletaCelula(int id, ponteiroCelula* arvore)
 {
     ponteiroCelula* ptr1;
@@ -133,7 +153,7 @@ int DeletaCelula(int id, ponteiroCelula* arvore)
     if((*ptr1)->filhoDireita != NULL)
     {
         if((*ptr1)->filhoEsquerda != NULL)
-            InsereCelula(((*ptr1)->filhoEsquerda)->y, ((*ptr1)->filhoEsquerda)->x,
+            InsereCelula_ptr(ptr1,
                          &(*ptr1)->filhoDireita);
         *ptr2 = *ptr1;
         *ptr1 = (*ptr2)->filhoDireita;

@@ -40,7 +40,7 @@ int main()
 
                     if(entrada == '+')
                     {
-                        InsereCelula(y, x, arvore);
+                        InsereCelula_Id(y, x, arvore);
                         mvwprintw(grade,y, x, "#");
                     }
                     else
