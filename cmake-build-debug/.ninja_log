@@ -6,3 +6,8 @@
 2	53	1695900012311434847	CMakeFiles/Jogo_da_vida_de_Conway.dir/Utilitarios/Utilitarios.c.o	d1cacf4df7716fc9
 1	86	1697722238353536170	CMakeFiles/Jogo_da_vida_de_Conway.dir/Main.c.o	adb7ee7e252f1ea5
 1	50	1696334903493935414	CMakeFiles/Jogo_da_vida_de_Conway.dir/Celulas/Celulas.c.o	18e19cb23f90ac5a
+1	121	1697809392772170658	CMakeFiles/Jogo_da_vida_de_Conway.dir/InterfaceUsuario/InterfaceUsuario.c.o	4eda0c86d9d9ece7
+2	121	1697809392772170658	CMakeFiles/Jogo_da_vida_de_Conway.dir/Celulas/Celulas.c.o	18e19cb23f90ac5a
+121	193	1697809392840170737	Jogo_da_vida_de_Conway	4c6b972200d661d2
+2	114	1698060380817783655	CMakeFiles/Jogo_da_vida_de_Conway.dir/Main.c.o	adb7ee7e252f1ea5
+114	190	1698060380893784597	Jogo_da_vida_de_Conway	4c6b972200d661d2

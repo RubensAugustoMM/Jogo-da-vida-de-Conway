@@ -41,14 +41,12 @@ int main()
                     if(entrada == '+')
                     {
                         InsereCelula(y, x, arvore);
-                        wprintw(grade, "#");
-                        wmove(grade, x-1, y);
+                        mvwprintw(grade,y, x, "#");
                     }
                     else
                     {
                         DeletaCelula(GeraId(y, x), arvore);
-                        wprintw(grade, "+");
-                        wmove(grade, x-1, y);
+                        mvwprintw(grade,y, x, "+");
                     }
 
                 }
