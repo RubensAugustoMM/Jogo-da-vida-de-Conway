@@ -17,13 +17,13 @@ WINDOW *InitBarraDeInformacoesEsquerda(int maxY, int maxX);
 //atualiza grade
 void AtualizaGrade(WINDOW* grade, int winPosY, int winPosX );
 //Atualiza barra de informações esquerda
-void AtualizaBarraEsquerda(WINDOW* barra, int winPosY, int winPosX, int curPosY, int curPosX);
+void AtualizaBarraEsquerda(WINDOW* barra, WINDOW* grade, int winY, int winX, int curPosY, int curPosX);
 //inicializa a interface do jogo
 void InitConwayGameOfLifeUI(WINDOW** grade, WINDOW** barraInferior, WINDOW** barraEsquerda);
 //Move a tela principal
 void ScrollWindow(WINDOW* barraEsquerda, WINDOW* grade);
 //move cursor
-void MoveCursor(WINDOW* barraEsquerda,WINDOW* grade, int dir);
+void MoveCursor(WINDOW* barraEsquerda,WINDOW* grade,int entrada, int* y, int* x);
 
 void DesenhaCelula(WINDOW* grade, int y, int x);
 

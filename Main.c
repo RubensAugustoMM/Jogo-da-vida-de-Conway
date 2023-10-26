@@ -9,7 +9,9 @@ int main()
 {
     int entrada;
     int fase = 0;
-    int x, y;
+    int telaX, telaY; // coordenadas da tela atual
+    int x, y; // coordenadas do plano cartesiano infinito do cursor
+    int virtX, virtY; // variáveis cartesianas para a tela
 
     WINDOW* grade;
     WINDOW* barraEsquerda;
@@ -19,8 +21,15 @@ int main()
 
     InitConwayGameOfLifeUI(&grade, &barraInferior, &barraEsquerda);
 
+    getyx(grade, virtX, virtY); //coordenadas iniciais do cursor
+    x = 0;
+    y = 0;
+    telaX = 0;
+    telaY = 0;
+
     while(1)
     {
+        AtualizaBarraEsquerda(barraEsquerda, grade, telaY, telaX, y, x);
         RefreshTodasasTelas(grade, barraInferior, barraEsquerda);
 
         if(fase == 0)
@@ -31,22 +40,24 @@ int main()
             {
                 if(entrada == KEY_LEFT || entrada == KEY_RIGHT ||
                     entrada == KEY_UP || entrada == KEY_DOWN)
-                    MoveCursor(barraEsquerda, grade, entrada);
+                    MoveCursor(barraEsquerda, grade, entrada, &y, &x);
 
                 else if(entrada == ' ')
                 {
                     entrada = winch(grade);
-                    getyx(grade, y, x);
+                    getyx(grade, virtY, virtX);
 
                     if(entrada == '+')
                     {
                         InsereCelula_Id(y, x, arvore);
-                        mvwprintw(grade,y, x, "#");
+                        mvwprintw(grade,virtY, virtX, "#");
+                        wmove(grade, virtY, virtX);
                     }
                     else
                     {
-                        DeletaCelula(GeraId(y, x), arvore); // No momento, ao deletar um filho esquerda de um nodo, a informação de todos os seus filhos é perdida!!!
-                        mvwprintw(grade,y, x, "+");
+                        DeletaCelula(GeraId(y, x), arvore);
+                        mvwprintw(grade,virtY, virtX, "+");
+                        wmove(grade, virtY, virtX);
                     }
 
                 }

@@ -12,7 +12,6 @@ WINDOW *InitGrade(int maxY, int maxX)
 
     grade = newwin(alt, comp, 3, (maxX/2) - (comp/2));
     keypad(grade, TRUE);
-
     for(int i = 0; i <= maxY;i++)
         mvwhline(grade, i, 0, '+', maxX);
 
@@ -42,10 +41,24 @@ WINDOW *InitBarraDeInformacoesInferior(int maxY, int maxX)
 WINDOW *InitBarraDeInformacoesEsquerda(int maxY, int maxX)
 {
     int comp = maxX/4;
+    int winMaxY, winMaxX;
 
     WINDOW *barraEsquerda = newwin(maxY, comp, 0, 0);
+    getmaxyx(barraEsquerda, winMaxY, winMaxX);
 
     mvwvline(barraEsquerda, 0, comp -1,'|', maxY );
+
+    mvwprintw(barraEsquerda, 0, winMaxX/2, "Tela atual:");
+    mvwprintw(barraEsquerda, 1, (winMaxX/2) + 3, "Y:");
+    mvwprintw(barraEsquerda,2, (winMaxX/2) + 3, "x:");
+
+    mvwprintw(barraEsquerda, 4, winMaxX/2, "Posicao plano:");
+    mvwprintw(barraEsquerda, 5, (winMaxX/2) + 3, "Y:");
+    mvwprintw(barraEsquerda,6, (winMaxX/2) + 3, "x:");
+
+    mvwprintw(barraEsquerda, 8, winMaxX/2, "Posicao grade:");
+    mvwprintw(barraEsquerda, 9, (winMaxX/2) + 3, "Y:");
+    mvwprintw(barraEsquerda,10, (winMaxX/2) + 3, "x:");
 
     wrefresh(barraEsquerda);
 
@@ -79,45 +92,80 @@ void InitConwayGameOfLifeUI(WINDOW** grade, WINDOW** barraInferior, WINDOW** bar
     }
 }
 
-void MoveCursor(WINDOW* barraEsquerda,WINDOW* grade, int dir)
+void MoveCursor(WINDOW *barraEsquerda,WINDOW *grade,int dir, int* y, int* x)
 {
-    int y, x;
+    int virtY, virtX;
     int maxY, maxX;
 
-    getyx(grade, y, x);
+    getyx(grade, virtY, virtX);
     getmaxyx(grade, maxY, maxX);
 
     switch (dir)
     {
         case KEY_UP:
-            if(y - 1 < 0)
+            if(virtY - 1 < 0)
                 ScrollWindow(barraEsquerda, grade);
-            else
-                wmove(grade, y - 1, x);
+            else {
+                wmove(grade, virtY - 1, virtX);
+                (*y)++;
+            }
             break;
 
         case KEY_DOWN:
-            if(y + 1 > maxY)
+            if(virtY + 2 > maxY)
                 ScrollWindow(barraEsquerda, grade);
-            else
-                wmove(grade, y + 1, x);
+            else {
+                wmove(grade, virtY + 1, virtX);
+                (*y)--;
+            }
             break;
 
         case KEY_LEFT:
-            if(x - 1 < 0)
+            if(virtX - 1 < 0)
                 ScrollWindow(barraEsquerda, grade);
-            else
-                wmove(grade, y, x - 1);
+            else {
+                wmove(grade, virtY, virtX - 1);
+                (*x)--;
+            }
             break;
 
         case KEY_RIGHT:
-            if(x + 1 > maxX)
+            if(virtX + 2 > maxX)
                 ScrollWindow(barraEsquerda, grade);
-            else
-                wmove(grade, y, x + 1);
+            else {
+                wmove(grade, virtY, virtX + 1);
+                (*x)++;
+            }
             break;
     }
 }
+
+
+void AtualizaBarraEsquerda(WINDOW* barraEsquerda, WINDOW* grade, int winY, int winX, int curPosY, int curPosX)
+{
+    int virtX, virtY;
+    int winMaxX, winMaxY;
+
+    getyx(grade, virtY, virtX);
+    getmaxyx(barraEsquerda, winMaxY, winMaxX);
+
+    wclear(barraEsquerda);
+
+    mvwvline(barraEsquerda, 0, winMaxX- 1,'|', winMaxY );
+
+    mvwprintw(barraEsquerda, 0, winMaxX/2, "Tela atual:");
+    mvwprintw(barraEsquerda, 1, (winMaxX/2) + 3, "Y:%d", winY);
+    mvwprintw(barraEsquerda,2, (winMaxX/2) + 3, "x:%d", winX);
+
+    mvwprintw(barraEsquerda, 4, winMaxX/2, "Posicao plano:");
+    mvwprintw(barraEsquerda, 5, (winMaxX/2) + 3, "Y:%d", curPosY);
+    mvwprintw(barraEsquerda,6, (winMaxX/2) + 3, "x:%d", curPosX);
+
+    mvwprintw(barraEsquerda, 8, winMaxX/2, "Posicao grade:");
+    mvwprintw(barraEsquerda, 9, (winMaxX/2) + 3, "Y:%d", virtY);
+    mvwprintw(barraEsquerda,10, (winMaxX/2) + 3, "x:%d", virtX);
+}
+
 //Desenha celula na grade
 void DesenhaCelula(WINDOW* grade, int y, int x);
 
