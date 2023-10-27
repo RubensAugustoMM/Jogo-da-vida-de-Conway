@@ -164,7 +164,7 @@ int DeletaCelula(int id, ponteiroCelula* arvore)
     else if((*ptr1)->filhoEsquerda != NULL)
     {
         *ptr2 = *ptr1;
-        *ptr1 = (*ptr2)->filhoDireita;
+        *ptr1 = (*ptr2)->filhoEsquerda;
 
         free(*ptr2);
         *ptr2 = NULL;
