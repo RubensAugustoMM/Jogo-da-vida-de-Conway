@@ -3,7 +3,8 @@
 //
 #include <ncurses.h>
 #include <stdio.h>
-#include "Celulas/Celulas.h" //lembre-se de retirar
+#include "Celulas/Celulas.h"
+#include "Utilitarios/Utilitarios.h"
 #ifndef JOGO_DA_VIDA_DE_CONWAY_GRADE_H
 #define JOGO_DA_VIDA_DE_CONWAY_GRADE_H
 
@@ -15,17 +16,20 @@ WINDOW *InitBarraDeInformacoesInferior(int maxY, int maxX);
 //função para gerar a barra de informação à esquerda
 WINDOW *InitBarraDeInformacoesEsquerda(int maxY, int maxX);
 //atualiza grade
-void AtualizaGrade(WINDOW* grade, int winPosY, int winPosX );
+void AtualizaGrade(WINDOW* grade,ponteiroCelula* arvore, int* telaY, int* telaX );
 //Atualiza barra de informações esquerda
 void AtualizaBarraEsquerda(WINDOW* barra, WINDOW* grade, int winY, int winX, int curPosY, int curPosX);
 //inicializa a interface do jogo
 void InitConwayGameOfLifeUI(WINDOW** grade, WINDOW** barraInferior, WINDOW** barraEsquerda);
 //Move a tela principal
-void ScrollWindow(WINDOW* barraEsquerda, WINDOW* grade);
-//move cursor
-void MoveCursor(WINDOW* barraEsquerda,WINDOW* grade,int entrada, int* y, int* x);
 
-void DesenhaCelula(WINDOW* grade, int y, int x);
+void DesenhaCelula(WINDOW* grade, int telaY, int telaX, int y, int x);
+
+void ScrollWindow(WINDOW* barraEsquerda, WINDOW* grade,ponteiroCelula* arvore, int dir, int* telaY, int* telaX);
+
+//move cursor
+void MoveCursor(WINDOW* barraEsquerda,WINDOW* grade,ponteiroCelula* arvore,int dir,int* telaY, int* telaX, int* y, int* x);
+
 
 void RefreshTodasasTelas(WINDOW* grade, WINDOW* barraInferior, WINDOW* barraEsquerda);
 

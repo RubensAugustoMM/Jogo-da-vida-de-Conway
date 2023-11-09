@@ -40,7 +40,7 @@ int main()
             {
                 if(entrada == KEY_LEFT || entrada == KEY_RIGHT ||
                     entrada == KEY_UP || entrada == KEY_DOWN)
-                    MoveCursor(barraEsquerda, grade, entrada, &y, &x);
+                    MoveCursor(barraEsquerda, grade, arvore, entrada,&telaY,&telaX, &y, &x);
 
                 else if(entrada == ' ')
                 {
@@ -49,7 +49,7 @@ int main()
 
                     if(entrada == '+')
                     {
-                        InsereCelula_Id(y, x, arvore);
+                        InsereCelula_Id(y, x, arvore);//substituir por desenha celula
                         mvwprintw(grade,virtY, virtX, "#");
                         wmove(grade, virtY, virtX);
                     }
